@@ -377,6 +377,8 @@ export default class Editor extends React.Component {
 
     this.InitializeEditor(editable, data);
 
+    if (!editable) return <div></div>
+    
     return (
       <button onClick={this.saveEditorState}>Save the data</button>
     )

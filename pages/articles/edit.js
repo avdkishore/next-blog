@@ -18,7 +18,6 @@ class EditArticle extends React.Component {
   }
 
   static async getInitialProps({ pathname, query, asPath }) {
-    console.log('router => ', Router)
     // fetching the article should be handled here
     let data = {
       "time": 1563816717958,
