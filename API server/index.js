@@ -187,6 +187,7 @@ class ServerExample {
 
       form.parse(request, (err, fields, files) => {
         if (err) {
+          console.log('error in parsing the data');
           reject(err);
         } else {
           console.log('fields', fields);

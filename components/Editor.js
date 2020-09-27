@@ -171,7 +171,16 @@ const editor = new EditorJS({
         buttonContent: 'Select an image to add',
         uploader: {
           uploadByFile(file) {
-            
+            let formData = new FormData();
+            formData.append("image", file);
+
+            return fetch('http://localhost:8008/uploadFile', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: formData
+            });
           },
 
           uploadByUrl(url) {
