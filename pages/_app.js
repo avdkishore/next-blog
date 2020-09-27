@@ -1,6 +1,8 @@
 import React from 'react';
 import App from 'next/app';
 
+import PageBar from '../components/PageBar';
+
 import './app.css';
 
 export default class BlogApp extends App {
@@ -12,7 +14,10 @@ export default class BlogApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
+        <div>
+          <PageBar />
           <Component {...pageProps} />
+        </div>
     );
   }
 }

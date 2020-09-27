@@ -171,11 +171,11 @@ const editor = new EditorJS({
         buttonContent: 'Select an image to add',
         uploader: {
           uploadByFile(file) {
-            
+            return Promise.resolve();
           },
 
           uploadByUrl(url) {
-
+            return Promise.resolve();
           }
         }
       }
@@ -316,7 +316,7 @@ export default class Editor extends React.Component {
     const json = await res.json();
 
     const id = json.id;
-    
+
     return this.props.updateRoute(id);
   }
 
