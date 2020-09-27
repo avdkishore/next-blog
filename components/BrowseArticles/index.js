@@ -34,10 +34,6 @@ export default class BrowseArticles extends React.Component {
   render() {
     const { data } = this.props;
 
-    return (
-      <div>
-        {this.renderArticles(data)}
-      </div>
-    )
+    return this.renderArticles(data);
   }
 }

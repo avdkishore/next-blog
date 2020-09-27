@@ -14,10 +14,10 @@ export default class BlogApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-        <div>
+        <>
           <PageBar />
           <Component {...pageProps} />
-        </div>
+        </>
     );
   }
 }
