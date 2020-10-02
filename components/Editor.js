@@ -257,6 +257,7 @@ const editor = new EditorJS({
     * onReady callback
     */
    onReady: () => {
+
     /** Hack to make the editor content non editable */
     if (!editor.editable) {
       const elements = document.querySelectorAll('[contenteditable=true]');
@@ -273,7 +274,36 @@ const editor = new EditorJS({
    * onChange callback
    */
   onChange: (e) => {
-    console.log('Editor.js content is changed',editor)
+    console.log('Editor.js content is changed',editor.editable, e);
+    if (!editor.editable) {
+      // const elem = document.getElementsByClassName('ce-block ce-block--focused');
+      const focusedElement = document.querySelectorAll('div.ce-block.ce-block--focused');
+      console.log('focusedElement => ', focusedElement);
+      focusedElement.forEach(element => {
+        console.log('focusedElement => ', focusedElement)
+        if (element.getAttribute('contenteditable') !== 'false') {
+          element.setAttribute('contenteditable' , false);
+          element.style.backgroundImage = 'none';
+        }
+      });
+  
+      const focusedElementChildren = document.querySelectorAll('div.ce-paragraph.cdx-block');
+      console.log('focusedElementChildren => ', focusedElementChildren);
+      focusedElementChildren.forEach(element => {
+        if (element.getAttribute('contenteditable') !== 'false') {
+          element.setAttribute('contenteditable' , false);
+        }
+      });
+
+      // double click on the text to get this toolbar
+      const toolbarElem = document.querySelectorAll('div.ce-conversion-toolbar.ce-conversion-toolbar--showed');
+      console.log('toolbarElem => ', toolbarElem);
+      toolbarElem.forEach(element => {
+        if (element.style.display !== 'none') {
+          element.style.display = 'none';
+        }
+      });
+    }
   },
 
   /**
@@ -336,7 +366,8 @@ export default class Editor extends React.Component {
       element.setAttribute('contenteditable' , false)
     });
 
-    document.getElementsByClassName('ce-toolbar')[0].style.display="none"
+    // document.getElementsByClassName('ce-toolbar')[0].style.display="none"
+
   }
 
   getTitle() {

@@ -45,6 +45,13 @@ function deserializer(data) {
 
         html += `<div class="ce-block"><div class="ce-block__content"><div class="cdx-block cdx-checklist">${checklistItems}</div></div></div>`
         break;
+      case 'embed':
+        html += `<div className="cdx-block embed-tool">
+        <iframe className="embed-tool__content" style={{width: "fit-100%"}} height="320" frameborder="0" width="580"
+          allowfullscreen src=${block.data.embed}></iframe>
+        <div style={{'text-align': "center", 'margin-top': "5px"}}>${block.data.caption}</div>
+        </div>`;
+        break;
       default:
         console.log('Unknown block type', block.type);
         console.log(block);
