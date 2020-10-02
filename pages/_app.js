@@ -1,11 +1,13 @@
 import React from 'react';
 import App from 'next/app';
 
+import { wrapper } from '../redux/store'
+
 import PageBar from '../components/PageBar';
 
 import './app.css';
 
-export default class BlogApp extends App {
+class BlogApp extends App {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
     return { ...appProps }
@@ -21,3 +23,5 @@ export default class BlogApp extends App {
     );
   }
 }
+
+export default wrapper.withRedux(BlogApp);
