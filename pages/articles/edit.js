@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic';
 import Router, { withRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 
-import classes from './app.css';
+import firebase from '../../config/firebase';
+
+import classes from './articles.module.css';
 
 const EditorComponent = dynamic(
   () => import('../../components/Editor'),
@@ -144,12 +146,11 @@ class EditArticle extends React.Component {
 
     if (articleId) {
       try {
-        const res = await fetch(`http://localhost:8008/article/${articleId}`);
-        const json = await res.json();
+        const db = firebase.firestore();
+        const snapshot = await db.collection('articles').doc(query.id).get();
+        const { title, editorData } = snapshot.data();
 
-        const { id, data: { title, editorData } } = json;
-
-        return { articleId: id, title, editorData: JSON.parse(editorData) }
+        return { articleId: snapshot.id, title, editorData: JSON.parse(editorData) }
       } catch (e) {
         console.log('error ->', e);
         return { articleId: null }

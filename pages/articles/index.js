@@ -2,29 +2,34 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 
+import firebase from '../../config/firebase';
+
 import ArticleDetails from '../../components/ArticleDetails';
 import BrowseArticles from '../../components/BrowseArticles';
 
 class Articles extends React.Component {
   static async getInitialProps({ query }) {
+    const db = firebase.firestore();
     if (query.id) {
       try {
-        const res = await fetch(`http://localhost:8008/article/${query.id}`);
-        const json = await res.json();
-  
-        const { id, data: { title, editorData } } = json;
-  
-        return { id, data: { title, editorData: JSON.parse(editorData) }}
+        const snapshot = await db.collection('articles').doc(query.id).get();
+        const { title, editorData } = snapshot.data();
+
+        return { id: query.id, data: { title, editorData: JSON.parse(editorData) }}
       } catch (e) {
         console.log('error => ', e);
         return {}
       }
     }
 
-    const res = await fetch('http://localhost:8008/articles');
-    const json = await res.json();
+    const snapshot = await db.collection('articles').get();
 
-    return { id: null, data: json }
+    const articles = snapshot.docs.map(doc => ({
+      data: doc.data(),
+      id: doc.id
+    }));
+
+    return { id: null, data: articles }
   }
 
   renderArticles() {

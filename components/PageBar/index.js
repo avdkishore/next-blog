@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import classes from './index.css';
+import classes from './pagebar.module.css';
 
 export default class PageBar extends Component {
 

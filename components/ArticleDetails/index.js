@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 import { deserializer } from '../../utils';
-import classes from './index.css';
+import classes from './article_details.module.css';
 
 const EditorComponent = dynamic(
   () => import('../../components/Editor'),

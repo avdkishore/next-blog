@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import classes from './index.css';
+import classes from './browse_articles.module.css';
 import { cssUtils } from '../../utils';
 
 export default class BrowseArticles extends React.Component {
