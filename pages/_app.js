@@ -5,6 +5,7 @@ import { wrapper } from '../redux/store'
 
 import PageBar from '../components/PageBar';
 
+import '../config/firebase';
 import './app.css';
 
 class BlogApp extends App {

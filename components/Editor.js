@@ -17,7 +17,9 @@ import Delimiter from '@editorjs/delimiter';
 import InlineCode from '@editorjs/inline-code';
 import LinkTool from '@editorjs/link';
 import Embed from '@editorjs/embed';
-import { throws } from 'assert';
+
+import firebase from '../config/firebase';
+
 // import Table from '@editorjs/table';
 
 const data = {
@@ -140,6 +142,8 @@ const data = {
   ],
   "version": "2.15.0"
 };
+
+const db = firebase.firestore();
 
 const editor = new EditorJS({
   /** 
@@ -338,23 +342,23 @@ export default class Editor extends React.Component {
   }
 
   async createOrSave({ articleId, editorData, title }) {
-    const body = {
-      id: articleId ? articleId : uuid(),
+    let id = articleId;
+
+    if (!articleId) {
+      const docRef = await db.collection('articles').add({
+        title,
+        editorData: JSON.stringify(editorData)
+      });
+
+      id = docRef.id;
+
+      return this.props.updateRoute(id);
+    }
+
+    await db.collection('articles').doc(articleId).set({
       title,
       editorData: JSON.stringify(editorData)
-    };
-
-    const res = await fetch('http://localhost:8008/article', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
     });
-
-    const json = await res.json();
-
-    const id = json.id;
 
     return this.props.updateRoute(id);
   }
