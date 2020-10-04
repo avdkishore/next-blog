@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import clockReducer from './clock';
+import editorReducer from './editor';
 
-export default combineReducers({ clock: clockReducer });
+export default combineReducers({ editor: editorReducer });
