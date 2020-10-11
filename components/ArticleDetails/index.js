@@ -7,7 +7,7 @@ import classes from './article_details.module.css';
 const EditorComponent = dynamic(
   () => import('../../components/Editor'),
   { ssr: false }
-)
+);
 
 export default class ArticleDetails extends React.Component {
   buildHTML(data) {
@@ -32,10 +32,10 @@ export default class ArticleDetails extends React.Component {
     console.log(data);
     return (
       <div className="app">
-        <div className={classes["app-body"]}>
-          <div id="codex-editor" className={classes["editor-wrapper"]}>
-            <header className={classes["app-header"]}>
-              <div contentEditable="true" placeholder="Title of the story" className={classes["header-title"]} autoFocus>
+        <div className={classes['app-body']}>
+          <div id="codex-editor" className={classes['editor-wrapper']}>
+            <header className={classes['app-header']}>
+              <div contentEditable="true" placeholder="Title of the story" className={classes['header-title']} autoFocus>
                 {this.renderTitle(data)}
               </div>
             </header>

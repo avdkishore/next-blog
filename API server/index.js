@@ -49,9 +49,9 @@ class ServerExample {
     const {method, url} = request;
 
     if (method.toLowerCase() === 'get' && url === '/') { 
-        response.writeHead(200, {'Content-Type': 'application/json'});
-        response.end(JSON.stringify({ message: 'Welcome' }));
-        return;
+      response.writeHead(200, {'Content-Type': 'application/json'});
+      response.end(JSON.stringify({ message: 'Welcome' }));
+      return;
     }
 
     if (method.toLowerCase() === 'get' && url === '/articles') {
@@ -79,17 +79,17 @@ class ServerExample {
     console.log('Got request on the ', url);
 
     switch (url) {
-      case '/uploadFile':
-        this.uploadFile(request, response);
-        break;
-      case '/fetchUrl':
-        this.fetchUrl(request, response);
-        break;
-      case '/article':
-        this.createOrUpdateArticle(request, response);
+    case '/uploadFile':
+      this.uploadFile(request, response);
+      break;
+    case '/fetchUrl':
+      this.fetchUrl(request, response);
+      break;
+    case '/article':
+      this.createOrUpdateArticle(request, response);
       // case 'update':
       //   this.updateArticle(request, response);
-      default: break;
+    default: break;
     }
   }
 

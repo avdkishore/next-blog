@@ -1,7 +1,6 @@
-import React from 'react';
 import App from 'next/app';
 
-import { wrapper } from '../redux/store'
+import { wrapper } from '../redux/store';
 
 import PageBar from '../components/PageBar';
 
@@ -11,16 +10,16 @@ import './app.css';
 class BlogApp extends App {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
-    return { ...appProps }
+    return { ...appProps };
   }
 
   render() {
     const { Component, pageProps } = this.props;
     return (
-        <>
-          <PageBar />
-          <Component {...pageProps} />
-        </>
+      <>
+        <PageBar />
+        <Component {...pageProps} />
+      </>
     );
   }
 }

@@ -4,4 +4,4 @@ import cssUtils from './cssUtils';
 export {
   deserializer,
   cssUtils
-}
+};

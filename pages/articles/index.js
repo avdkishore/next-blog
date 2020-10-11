@@ -1,4 +1,3 @@
-import React from 'react';
 import { withRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 
@@ -15,10 +14,10 @@ class Articles extends React.Component {
         const snapshot = await db.collection('articles').doc(query.id).get();
         const { title, editorData } = snapshot.data();
 
-        return { id: query.id, data: { title, editorData: JSON.parse(editorData) }}
+        return { id: query.id, data: { title, editorData: JSON.parse(editorData) }};
       } catch (e) {
         console.log('error => ', e);
-        return {}
+        return {};
       }
     }
 
@@ -29,17 +28,17 @@ class Articles extends React.Component {
       id: doc.id
     }));
 
-    return { id: null, data: articles }
+    return { id: null, data: articles };
   }
 
   renderArticles() {
     const { id, data } = this.props;
 
     if (id) {
-      return <ArticleDetails id={id} data={data} />
+      return <ArticleDetails id={id} data={data} />;
     }
     
-    return <BrowseArticles data={data} />
+    return <BrowseArticles data={data} />;
   }
 
   render() {

@@ -15,7 +15,7 @@ app.prepare().then(() => {
   });
 
   server.get('/articles/edit/:id', (req, res) => {
-    console.log('req.params', req.params)
+    console.log('req.params', req.params);
     const actualPage = '/articles/edit';
     const queryParams = { id: req.params.id };
     app.render(req, res, actualPage, queryParams);
@@ -26,7 +26,7 @@ app.prepare().then(() => {
     const actualPage = '/articles/preview';
     const queryParams = { id: req.params.id };
     app.render(req, res, actualPage, queryParams);
-  })
+  });
 
   server.get('/articles/:id', (req, res) => {
     const actualPage = '/articles';

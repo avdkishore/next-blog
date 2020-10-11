@@ -13,6 +13,6 @@ const LayoutHOC = Page => {
       <Page />
     </div>
   );
-}
+};
 
 export default LayoutHOC;
