@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import uuid from 'uuid/v4';
 import fetch from 'isomorphic-unfetch';
 
 import EditorJS from '@editorjs/editorjs';

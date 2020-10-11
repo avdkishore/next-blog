@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
-import Router, { withRouter } from 'next/router';
-import fetch from 'isomorphic-unfetch';
+import { withRouter } from 'next/router';
 
 import firebase from '../../config/firebase';
 

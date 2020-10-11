@@ -9,3 +9,6 @@
 
 * /articles/new
 * /articles/edit/:id
+
+## articles/preview
+* /articles/preview/:id

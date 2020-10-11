@@ -1,4 +1,4 @@
-import Router, { withRouter } from 'next/router';
+import { withRouter } from 'next/router';
 
 class ArticlePreview extends React.Component {
   render() {
