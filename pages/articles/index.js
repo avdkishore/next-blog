@@ -1,5 +1,4 @@
 import { withRouter } from 'next/router';
-import fetch from 'isomorphic-unfetch';
 
 import firebase from '../../config/firebase';
 

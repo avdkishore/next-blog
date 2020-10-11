@@ -7,7 +7,7 @@ import PageBar from '../components/PageBar';
 import '../config/firebase';
 import './app.css';
 
-class BlogApp extends App {
+class Blog extends App {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
     return { ...appProps };
@@ -24,4 +24,4 @@ class BlogApp extends App {
   }
 }
 
-export default wrapper.withRedux(BlogApp);
+export default wrapper.withRedux(Blog);

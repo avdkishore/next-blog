@@ -34,6 +34,11 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams);
   });
 
+  server.get('/', (req, res) => {
+    const actualPage = '/articles';
+    app.render(req, res, actualPage);
+  });
+
   server.get('*', (req, res) => {
     return handle(req, res);
   });
