@@ -1,8 +1,7 @@
-import { fork, takeEvery } from 'redux-saga/effects';
+import { fork, takeEvery, take } from 'redux-saga/effects';
 import editorActions, { constants } from '../actions/editor';
 
 export default () => {
-
     function* save() {
         while(true) {
             const { payload } = yield take(constants.SAVE_ARTICLE_PENDING);
@@ -20,9 +19,13 @@ export default () => {
         } 
     }
 
-    return function* watcher() {
-        yield fork(
-            save()
-        );
+    function* watcher() {
+        yield fork(save);
+    }
+
+    return {
+        watcher
     }
 }
+
+// export default editorSaga;
