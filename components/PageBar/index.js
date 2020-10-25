@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
+import { setPagebarRef } from '../../redux/actions/pagebar';
 import classes from './pagebar.module.css';
 
 export default class PageBar extends React.Component {
-
     static propTypes = {
+      isEditMode: PropTypes.bool.isRequired,
       backgroundColor: PropTypes.string,
       title: PropTypes.string,
-      isEditMode: PropTypes.bool,
       isSaved: PropTypes.bool,
 
       // functions to be called for actions
@@ -20,37 +20,46 @@ export default class PageBar extends React.Component {
       super(props);
     }
 
-    renderLeft = () => (
-      <div className={classes['left-container']}>
-        <div className={classes['logo']}>
-          <img src="https://picsum.photos/40" />
+    renderLeft = () => {
+      const { title } = this.props;
+
+      return (
+        <div className={classes['left-container']}>
+          <div className={classes['logo']}>
+            <img src="https://picsum.photos/40" />
+          </div>
+          <div className={classes['left-info-container']}>
+            <span className={classes['mode-title']}>
+              {title}
+            </span>
+          </div>
         </div>
-        <div className={classes['left-info-container']}>
-          <span className={classes['mode-title']}>
-                    Draft
-          </span>
+      );
+    }    
+    
+    renderRight = () => {
+      const { isEditMode } = this.props;
+  
+      if (!isEditMode) return null;
+
+      return (
+        <div className={classes['save-button-container']}>
           <span className={classes['status-text']}>
                     Saved
           </span>
-        </div>
-      </div>
-    );    
-
-    renderPageBar() {
-      return (
-        <div className={classes['pagebar-container']}>
-          {this.renderLeft()}
-          <div className={classes['save-button-container']}>
-            <button className={classes['save-button']}>
-              <span className={classes['save-text']}>Save</span>
-            </button>
-          </div>
+          <button className={classes['save-button']}>
+            <span className={classes['save-text']}>Save</span>
+          </button>
         </div>
       );
     }
 
     render() {
-      return this.renderPageBar();
+      return (
+        <div className={classes['pagebar-container']}>
+          {this.renderLeft()}
+          {this.renderRight()}
+        </div>
+      );
     }
-
 }

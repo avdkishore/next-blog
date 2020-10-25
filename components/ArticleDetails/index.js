@@ -29,7 +29,7 @@ export default class ArticleDetails extends React.Component {
 
   render() {
     const { id, data } = this.props;
-    console.log(data);
+    
     return (
       <div className="app">
         <div className={classes['app-body']}>

@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 
+import PageBar from '../../components/PageBar';
+
 import firebase from '../../config/firebase';
 
 import classes from './articles.module.css';
@@ -186,6 +188,7 @@ class EditArticle extends React.Component {
 
     return (
       <div className="app">
+        <PageBar isEditMode />
         {/* <div className="theme-settings"><a href="#">Change the theme</a></div> */}
         <div className={classes['app-body']}>
           <div id="codex-editor" className={classes['editor-wrapper']}>

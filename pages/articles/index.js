@@ -2,6 +2,7 @@ import { withRouter } from 'next/router';
 
 import firebase from '../../config/firebase';
 
+import PageBar from '../../components/PageBar';
 import ArticleDetails from '../../components/ArticleDetails';
 import BrowseArticles from '../../components/BrowseArticles';
 
@@ -34,10 +35,20 @@ class Articles extends React.Component {
     const { id, data } = this.props;
 
     if (id) {
-      return <ArticleDetails id={id} data={data} />;
+      return (
+        <>
+          <PageBar isEditMode={false} title={data.title} />
+          <ArticleDetails id={id} data={data} />
+        </>
+      );
     }
     
-    return <BrowseArticles data={data} />;
+    return (
+      <>
+        <PageBar isEditMode={false} title={'Browse All the articles'}/>
+        <BrowseArticles data={data} />
+      </>
+    );
   }
 
   render() {
