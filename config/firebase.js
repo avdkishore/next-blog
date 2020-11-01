@@ -10,8 +10,6 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-console.log('firebase config => ', firebaseConfig);
-
 try {
   firebase.initializeApp(firebaseConfig);
 } catch(err){
