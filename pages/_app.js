@@ -1,9 +1,8 @@
 import App from 'next/app';
 import { PersistGate } from 'redux-persist/integration/react';
-import { ReactReduxContext, Provider }  from 'react-redux';
+import { ReactReduxContext }  from 'react-redux';
 
-import { wrapper, makeStore } from '../redux/store';
-import { setPagebarRef } from '../redux/actions/pagebar';
+import { wrapper } from '../redux/store';
 
 import '../config/firebase';
 import './app.css';
@@ -22,7 +21,7 @@ class Blog extends App {
   }
 
   render() {
-    const { Component, pageProps, ...other } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <ReactReduxContext.Consumer>
