@@ -1,6 +1,6 @@
 {
   "name": "bloggy-next",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "APP_ENV=local node server.js",
