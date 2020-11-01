@@ -1,0 +1,12 @@
+{
+  "functions": {
+
+  },
+  "rewrites": [{
+    "source": "articles/new", "destination": "articles/edit",
+    "source": "articles/edit/(.*)", "destination": "articles/edit",
+    "source": "articles/preview/(.*)", "destination": "articles/preview",
+    "source": "articles/(.*)", "destination": "articles",
+    "source": "/", "destination": "articles"
+  }]
+}
