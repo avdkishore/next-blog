@@ -1,5 +1,4 @@
 import App from 'next/app';
-import { PersistGate } from 'redux-persist/integration/react';
 import { ReactReduxContext }  from 'react-redux';
 
 import { wrapper } from '../redux/store';
@@ -9,7 +8,8 @@ import './app.css';
 
 class Blog extends App {
   static async getInitialProps(appContext) {
-    const appProps = await App.getInitialProps(appContext);
+    console.log('appContext => ', appContext);
+    const appProps = appContext.Component.getInitialProps ? await appContext.Component.getInitialProps(appContext) : {};
     return { ...appProps };
   }
 
@@ -27,9 +27,7 @@ class Blog extends App {
       <ReactReduxContext.Consumer>
         {({ store }) => {
           return (
-            <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
-              <Component {...pageProps} />
-            </PersistGate>
+            <Component {...pageProps} />
           );
         }}
       </ReactReduxContext.Consumer>
