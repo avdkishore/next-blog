@@ -1,18 +1,38 @@
-import React from 'react';
 import App from 'next/app';
+import { ReactReduxContext }  from 'react-redux';
 
+import { wrapper } from '../redux/store';
+
+import '../config/firebase';
 import './app.css';
 
-export default class BlogApp extends App {
+class Blog extends App {
   static async getInitialProps(appContext) {
-    const appProps = await App.getInitialProps(appContext);
-    return { ...appProps }
+    console.log('appContext => ', appContext);
+    const appProps = appContext.Component.getInitialProps ? await appContext.Component.getInitialProps(appContext) : {};
+    return { ...appProps };
+  }
+
+  constructor() {
+    super(...arguments);
+  }
+
+  componentDidMount() {
   }
 
   render() {
     const { Component, pageProps } = this.props;
+
     return (
-          <Component {...pageProps} />
+      <ReactReduxContext.Consumer>
+        {({ store }) => {
+          return (
+            <Component {...pageProps} />
+          );
+        }}
+      </ReactReduxContext.Consumer>
     );
   }
 }
+
+export default wrapper.withRedux(Blog);

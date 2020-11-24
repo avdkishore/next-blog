@@ -14,7 +14,6 @@
  */
 const http = require('http');
 const formidable = require('formidable');
-const { parse } = require('querystring');
 const fs = require('fs');
 const request = require('request');
 const crypto = require('crypto');
@@ -49,9 +48,9 @@ class ServerExample {
     const {method, url} = request;
 
     if (method.toLowerCase() === 'get' && url === '/') { 
-        response.writeHead(200, {'Content-Type': 'application/json'});
-        response.end(JSON.stringify({ message: 'Welcome' }));
-        return;
+      response.writeHead(200, {'Content-Type': 'application/json'});
+      response.end(JSON.stringify({ message: 'Welcome' }));
+      return;
     }
 
     if (method.toLowerCase() === 'get' && url === '/articles') {
@@ -79,17 +78,17 @@ class ServerExample {
     console.log('Got request on the ', url);
 
     switch (url) {
-      case '/uploadFile':
-        this.uploadFile(request, response);
-        break;
-      case '/fetchUrl':
-        this.fetchUrl(request, response);
-        break;
-      case '/article':
-        this.createOrUpdateArticle(request, response);
+    case '/uploadFile':
+      this.uploadFile(request, response);
+      break;
+    case '/fetchUrl':
+      this.fetchUrl(request, response);
+      break;
+    case '/article':
+      this.createOrUpdateArticle(request, response);
       // case 'update':
       //   this.updateArticle(request, response);
-      default: break;
+    default: break;
     }
   }
 
@@ -187,6 +186,7 @@ class ServerExample {
 
       form.parse(request, (err, fields, files) => {
         if (err) {
+          console.log('error in parsing the data');
           reject(err);
         } else {
           console.log('fields', fields);
