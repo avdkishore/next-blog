@@ -14,7 +14,6 @@
  */
 const http = require('http');
 const formidable = require('formidable');
-const { parse } = require('querystring');
 const fs = require('fs');
 const request = require('request');
 const crypto = require('crypto');

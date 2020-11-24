@@ -16,7 +16,6 @@ export default class BrowseArticles extends React.Component {
   }
 
   renderArticles(data) {
-    console.log('data => ', data);
     return (
       <div className={classes['preview-wrapper']}>
         {
