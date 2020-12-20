@@ -1,2 +1,4 @@
-# next-blog
-Blog written in NextJS on the frontend and Firebase as backend.  
+# Blog
+
+Blog written in NextJS on the frontend and Firebase as backend.
+
